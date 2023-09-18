@@ -16,3 +16,20 @@ img {
   display: block;
   max-width: 100%;
 }
+
+/* завдання 2, додати мінімальне оформлення елементів таймера*/
+.timer {
+  display: flex;
+}
+
+.field {
+  display: flex;
+  flex-direction: column;
+  /* justify-content: center; */
+  text-align: center;
+  margin-right: 20px;
+}
+
+.value {
+font-size: 24px;  
+}
