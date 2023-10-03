@@ -3,6 +3,7 @@
 import flatpickr from "flatpickr";
 import "flatpickr/dist/flatpickr.min.css";
 
+import { Report } from 'notiflix/build/notiflix-report-aio';
 // 
 const refs = {
     days: document.querySelector('.value[data-days]'),
@@ -26,8 +27,12 @@ const options = {
     onClose(selectedDates) {
         selectedDate = selectedDates[0].getTime();
       if (selectedDate > Date.now()) { btnStart.removeAttribute("disabled", "disabled") }
-      else { window.alert('Please choose a date in the future') }
-        
+      else {
+        // window.alert('Please choose a date in the future')
+        Report.warning(
+'Please choose a date in the future', '','Okay',
+);
+      }
   },
 };
 
@@ -37,7 +42,7 @@ flatpickr('input#datetime-picker', options);
 
 function onStartClick() {
     timerId = setInterval(timer,1000)
- }
+  }
 
 function timer() {
   let counter = selectedDate - Date.now();
@@ -48,7 +53,7 @@ function timer() {
     let data = convertMs(counter);
     timerDisplay(data);
 }
- 
+  
 function convertMs(ms) {
   // Number of milliseconds per unit of time
     const second = 1000;
